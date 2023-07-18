@@ -164,9 +164,16 @@ to try the two-step method mentioned in our paper.
 
 Default configuration files are stored in``experiments/`` and you are welcomed to try your own configurations. If you find a better yaml configuration, please let us know by raising an issue or a PR and we will update the benchmark!
 
+## Acknowledgements
+***
+Our codes are partly based on the following GitHub repository. Thanks for their awesome works.
+[ThinkMatch](https://github.com/Thinklab-SJTU/ThinkMatch),
+[Deep Graph Matching Consensus](https://github.com/rusty1s/deep-graph-matching-consensus),
+[2021-IA-GM](https://github.com/CMACH508/2021-IA-GM).
 
 ## Citation
 ***
+If you find this repository helpful, please cite our paper.
 ```
 @article{Guo_Zhang_Tu_Xu_2023,
   title={Self-Supervised Bidirectional Learning for Graph Matching},
