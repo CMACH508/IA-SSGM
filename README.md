@@ -163,3 +163,19 @@ $ python train_finetune.py --cfg path/to/your/yaml
 to try the two-step method mentioned in our paper.
 
 Default configuration files are stored in``experiments/`` and you are welcomed to try your own configurations. If you find a better yaml configuration, please let us know by raising an issue or a PR and we will update the benchmark!
+
+
+## Citation
+***
+```
+@article{Guo_Zhang_Tu_Xu_2023,
+  title={Self-Supervised Bidirectional Learning for Graph Matching},
+  volume={37},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/25943},
+  DOI={10.1609/aaai.v37i6.25943},
+  number={6}, journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  author={Guo, Wenqi and Zhang, Lin and Tu, Shikui and Xu, Lei},
+  year={2023},
+  month={Jun.},
+  pages={7784-7792} }
+```
