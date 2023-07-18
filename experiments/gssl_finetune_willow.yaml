@@ -1,0 +1,44 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: willow_finetune_augsame_onlytrain
+
+# experiment setting.
+MODULE: GSSL.Matching
+DATASET_FULL_NAME: WILLOWObjectClass # generate dataset object.
+DATASET_PATH: ./data/WILLOW-ObjectClass_SSL
+
+BATCH_SIZE: 16
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+GPUS:
+  - 0
+PRETRAINED_PATH: output/gssl_willow_augsame_onlytrain/params/params_0120.pt
+TRAIN:
+  START_EPOCH: 0
+  NUM_EPOCHS: 30
+  SEPARATE_BACKBONE_LR: True
+  BACKBONE_LR: 1.0e-5
+  # learning rate
+  LR: 1.0e-4
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 10
+    - 20
+  EPOCH_ITERS: 1000
+
+  
+
+EVAL:
+  EPOCH_ITERS: 100
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+  ITERATION_: 1
+  ALPHA1: 0.75
+  ALPHA2: 1.25
+
+GCL:
+  ENCODER_TYPE: SplineCNN # GINEConv

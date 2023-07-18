@@ -1,0 +1,46 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: willow_joint_spline_inlier
+
+# experiment setting.
+MODULE: GSSL.joint_matching
+DATASET_FULL_NAME: WILLOWObjectClass # generate dataset object.
+DATASET_PATH: ./data/WILLOW-ObjectClass_SSL
+
+BATCH_SIZE: 64
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+GPUS:
+  - 0
+
+TRAIN:
+  LOSS_FUNC_MODE: G2L
+  START_EPOCH: 0
+  NUM_EPOCHS: 30
+  SEPARATE_BACKBONE_LR: True
+  BACKBONE_LR: 1.0e-4
+  # learning rate
+  LR: 1.0e-3
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 5
+    - 20
+  EPOCH_ITERS: 2000
+  LOSS_GCL: 100.0
+  LOSS_PERM: 1.0
+  LOSS_CONSISTENCY: 0.25
+
+EVAL:
+   SAMPLES: 100
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+  ITERATION_: 1
+  ALPHA1: 0.75
+  ALPHA2: 1.25
+
+GCL:
+  ENCODER_TYPE: SplineCNN # GINEConv

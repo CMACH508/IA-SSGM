@@ -1,0 +1,38 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: willow_augsame_onlytrain
+
+# experiment setting.
+MODULE: GSSL.model_pretrain
+DATASET_FULL_NAME: WILLOWObjectClass # generate dataset object.
+DATASET_PATH: ./data/WILLOW-ObjectClass_SSL
+
+BATCH_SIZE: 64
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+GPUS:
+  - 0
+
+TRAIN:
+  LOSS_FUNC_MODE: L2L
+  START_EPOCH: 0
+  NUM_EPOCHS: 120
+
+  # learning rate
+  LR: 1.0e-2
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 30
+    - 80
+    - 100
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+
+GCL:
+  ENCODER_TYPE: SplineCNN # GINEConv
+
+

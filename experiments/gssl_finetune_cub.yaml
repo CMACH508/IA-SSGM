@@ -1,0 +1,41 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: cub2011_finetune_gine_inoutlier
+# experiment setting.
+MODULE: GSSL.Matching
+DATASET_FULL_NAME: CUB2011Object # generate dataset object.
+DATASET_PATH: ./data/CUB_200_2011_SSL
+BATCH_SIZE: 16
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+GPUS:
+  - 0
+# PRETRAINED_PATH: output/gssl_cub2011_gine_g2l_subedgemaskboth/params/params_0200.pt
+TRAIN:
+  START_EPOCH: 0
+  NUM_EPOCHS: 50
+  SEPARATE_BACKBONE_LR: True
+  BACKBONE_LR: 1.0e-4
+  # learning rate
+  LR: 1.0e-3
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 20
+    - 40
+  EPOCH_ITERS: 200
+
+
+EVAL:
+   SAMPLES: 100
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+  ITERATION_: 1
+  ALPHA1: 1.25
+  ALPHA2: 0.75
+
+GCL:
+  ENCODER_TYPE: GINEConv # GINEConv

@@ -1,0 +1,37 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: pascalvoc_pretrain
+
+# experiment setting.
+MODULE: GSSL.model_pretrain
+DATASET_FULL_NAME: PascalVOCKeypoints # generate dataset object.
+DATASET_PATH: ./data/PascalVOC_SSL
+
+BATCH_SIZE: 64
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+GPUS:
+  - 0
+
+TRAIN:
+  LOSS_FUNC_MODE: L2L
+  START_EPOCH: 0
+  NUM_EPOCHS: 100
+
+  # learning rate
+  LR: 1.0e-2
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 30
+    - 80
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+
+GCL:
+  ENCODER_TYPE: SplineCNN # GINEConv
+
+

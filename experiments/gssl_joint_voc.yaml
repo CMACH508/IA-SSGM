@@ -1,0 +1,50 @@
+# generate output dir.
+MODEL_NAME: gssl
+DATASET_NAME: voc_joint_spline_edge_outlier
+
+# experiment setting.
+MODULE: GSSL.joint_matching
+DATASET_FULL_NAME: PascalVOCKeypoints
+DATASET_PATH: ./data/PascalVOC_SSL
+
+BATCH_SIZE: 128
+RANDOM_SEED: 9876
+STATISTIC_STEP: 100
+
+PRETRAINED_PATH: output/gssl_voc_joint_spline_edge_inlier/params/params_0030.pt
+
+GPUS:
+  - 0
+
+TRAIN:
+  LOSS_FUNC_MODE: L2L
+  START_EPOCH: 0
+  NUM_EPOCHS: 30
+  SEPARATE_BACKBONE_LR: True
+  BACKBONE_LR: 1.0e-4
+  # learning rate
+  LR: 1.0e-3
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 5
+    - 20
+  EPOCH_ITERS: 2000
+  
+  LOSS_GCL: 5.0
+  LOSS_PERM: 0.5
+  LOSS_CONSISTENCY: 0.5
+
+
+EVAL:
+   SAMPLES: 100
+
+BIIA:
+  FEATURE_CHANNEL: 1024
+  GNN_LAYER: 2
+  ITERATION_: 1
+  ALPHA1: 0.75
+  ALPHA2: 1.25
+
+GCL:
+  ENCODER_TYPE: SplineCNN # GINEConv
