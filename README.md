@@ -5,7 +5,7 @@ This repository contains PyTorch implementation of the paper: [Self-Supervised B
 
 ## Supplementary File 
 ***
-Supplementary materials related to our paper are available in [Supplementary_material.pdf](https://).
+Supplementary materials related to our paper are available in [Supplementary_material.pdf]([https://](https://github.com/CMACH508/IA-SSGM/blob/main/Supplementary_material.pdf)).
 
 ## Installation
 ***
